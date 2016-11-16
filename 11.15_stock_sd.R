@@ -1,9 +1,9 @@
-# this little function is used to get historical data of given stock
-# between given year, if start year is before stock existence, it will
-# start from its first year available
+# stock history loaded from yahoo finance, author of these functions does not take |
+# responsibilty if any information is missing or unaccurate.
 
 load_stock_history <- function(ticker = "SPY",start_year = 1950,end_year = 2016) {
-  download_address <- paste("http://chart.finance.yahoo.com/table.csv?s=",ticker,"&c=",start_year,"&f=",end_year,"&g=d&ignore=.csv",sep="")
+  download_address <- paste("http://chart.finance.yahoo.com/table.csv?s=",ticker,"&c=",
+                            start_year,"&f=",end_year,"&g=d&ignore=.csv",sep="")
   download.file(download_address,destfile = paste(ticker,"_hist_data.csv",sep=""))
   data <- read.csv(paste(ticker,"_hist_data.csv",sep=""))
   data
