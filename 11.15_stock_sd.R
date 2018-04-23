@@ -1,9 +1,8 @@
 # stock history loaded from yahoo finance, author of these functions does not take |
 # responsibilty if any information is missing or unaccurate.
 
-load_stock_history <- function(ticker = "SPY",start_year = 1950,end_year = 2016) {
-  download_address <- paste("http://chart.finance.yahoo.com/table.csv?s=",ticker,"&c=",
-                            start_year,"&f=",end_year,"&g=d&ignore=.csv",sep="")
+load_stock_history <- function(ticker = "SPY",start_year = 1950,end_year = 2017) {
+  download_address <- paste("https://query1.finance.yahoo.com/v7/finance/download/",ticker,"?period1=1521796767&period2=1524475167&interval=1d&events=history&crumb=HeJRqgGl5Ca",sep="")
   download.file(download_address,destfile = paste(ticker,"_hist_data.csv",sep=""))
   data <- read.csv(paste(ticker,"_hist_data.csv",sep=""))
   data
